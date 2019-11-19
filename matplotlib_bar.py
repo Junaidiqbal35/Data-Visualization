@@ -11,8 +11,10 @@ try:
 
         # DictReader class basically creates a CSV object that behaves like a Python OrderedDict
         csv_reader = csv.DictReader(csv_file)
-        """A Counter() is a container that stores elements as dictionary keys, and their counts are stored as 
-        dictionary values. """
+        """ Counter() method
+            A Counter() is a container that stores elements as dictionary keys, 
+            and their counts are stored as dictionary values.
+         """
         language_counter = Counter()
 
         for row in csv_reader:
@@ -49,5 +51,5 @@ try:
     # open interactive windows that display your figure
     plt.show()
 
-except IOError:
-    print(" Error While Opening the File ")
+except FileNotFoundError:
+    print(" Error While Opening the File or file not found ")

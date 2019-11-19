@@ -9,9 +9,9 @@ def pie_chart_function():
     # with statement will automatically close the file after the nested block of code
     with open('data.csv') as csv_file:
         csv_reader = csv.DictReader(csv_file)
-        """
-            A Counter() is a container that stores elements as dictionary keys, and their counts are stored as 
-            dictionary values. 
+        """ Counter() Method
+            A Counter() is a container that stores elements as dictionary keys, 
+            and their counts are stored as dictionary values. 
         """
         language_counter = Counter()
         for row in csv_reader:
@@ -24,12 +24,13 @@ def pie_chart_function():
         popularity.append(item[1])
     # Specifies the fraction of the radius with which to offset each wedge.
     explode = [0, 0, 0, 0.1, 0]
-    # Autopct parm  used to label the wedges with their numeric value
+
+    # Autopct parameter  used to label the wedges with their numeric value
     try:
         plt.pie(popularity, labels=languages, explode=explode, shadow=True,
                 startangle=90, autopct='%1.1f%%',
                 wedgeprops={'edgecolor': 'black'})
-    except Exception:
+    except IOError:
         print(Exception)
     plt.title("Top 5 Programming Pie Chart")
     # tight_layout automatically adjusts subplot params so that the subplot(s) fits in to the figure area
